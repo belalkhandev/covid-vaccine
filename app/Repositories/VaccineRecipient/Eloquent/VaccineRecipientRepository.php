@@ -23,4 +23,17 @@ class VaccineRecipientRepository extends Repository implements VaccineRecipientR
             'vaccine_center_id' => $data['vaccine_center_id'],
         ]);
     }
+
+    public function findByNID(string $nid)
+    {
+        return $this->query()
+            ->with([
+                'vaccineCenter',
+                'vaccine',
+                'vaccine.vaccineCenter',
+                'vaccine.vaccineDosage',
+            ])
+            ->where('nid', $nid)
+            ->first();
+    }
 }

@@ -16,4 +16,14 @@ class VaccineRecipient extends Model
         'gender',
         'vaccine_center_id',
     ];
+
+    public function vaccineCenter()
+    {
+        return $this->belongsTo(VaccineCenter::class);
+    }
+
+    public function vaccine()
+    {
+        return $this->hasOne(Vaccine::class);
+    }
 }
