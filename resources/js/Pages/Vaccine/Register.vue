@@ -1,6 +1,13 @@
 <script setup>
-
 import {Head, Link} from "@inertiajs/vue3";
+
+defineProps({
+    vaccineCenters: {
+        type: Array,
+        default: () => []
+    }
+})
+
 </script>
 
 <template>
@@ -21,9 +28,26 @@ import {Head, Link} from "@inertiajs/vue3";
                         <label for="">NID</label>
                         <input type="text" class="rounded border-gray-300" placeholder="Enter NID">
                     </div>
+
                     <div class="form-group flex flex-col gap-1">
                         <label for="">Contact No</label>
                         <input type="text" class="rounded border-gray-300" placeholder="Enter Contact No">
+                    </div>
+                    <div class="form-group flex flex-col gap-1">
+                        <label for="">Gender</label>
+                        <select  class="rounded border-gray-300">
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group flex flex-col gap-1">
+                        <label for="">Vaccine Center</label>
+                        <select name="" id="" class="rounded border-gray-300">
+                            <option value="" disabled>Choose Vaccine Center</option>
+                            <option v-for="vaccineCenter in vaccineCenters" :value="vaccineCenter.id">{{ vaccineCenter.name }}</option>
+                        </select>
                     </div>
                     <button type="submit" class="w-full bg-sky-600 text-white py-2 px-4 rounded hover:bg-sky-800 transition duration-300">Submit</button>
                 </form>
