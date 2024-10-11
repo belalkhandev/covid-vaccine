@@ -1,6 +1,10 @@
 <script setup>
 import {Head, Link, useForm} from "@inertiajs/vue3";
 import InputError from "@/Components/InputError.vue";
+import {ref} from "vue";
+
+const successMessage = ref('');
+const errorMessage = ref('');
 
 defineProps({
     vaccineCenters: {
@@ -22,6 +26,10 @@ const submitForm = () => {
         preserveScroll: true,
         onSuccess: () => {
             form.reset();
+            successMessage.value = 'Thank you for vaccine registration'
+        },
+        onError: (error) => {
+            errorMessage.value = error.message
         }
     })
 }
@@ -36,6 +44,15 @@ const submitForm = () => {
                 <h2 class="font-bold text-3xl">COVID VACCINE</h2>
                 <h3 class="font-bold text-2xl mt-4">Registration</h3>
             </div>
+
+            <div v-if="successMessage" class="bg-green-100 text-green-800 p-4 rounded">
+                {{ successMessage }}
+            </div>
+
+            <div v-if="errorMessage" class="bg-red-100 text-red-800 p-4 rounded">
+                {{ errorMessage }}
+            </div>
+
             <div class="border-b pb-6">
                 <form @submit.prevent="submitForm" class="flex flex-col gap-3">
                     <div class="form-group flex flex-col gap-1">

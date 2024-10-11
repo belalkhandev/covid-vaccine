@@ -34,7 +34,7 @@ class VaccineRegisterRequest extends FormRequest
         return [
             'name.required' => 'Name is required',
             'nid.required' => 'NID is required',
-            'nid.unique' => 'NID already exists',
+            'nid.unique' => 'Already registered with this NID',
             'contact_no.required' => 'Contact number is required',
             'vaccine_center_id.required' => 'Vaccine center is required',
         ];
