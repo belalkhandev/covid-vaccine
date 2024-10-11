@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\VaccineCenter;
 use App\Models\VaccineDosage;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class VaccineCenterSeeder extends Seeder
@@ -48,7 +47,7 @@ class VaccineCenterSeeder extends Seeder
             [
                 'name' => 'National Institute of Neurosciences & Hospital	',
                 'address' => 'Sher-E-Bangla Nagar, Dhaka-1207',
-            ]
+            ],
         ];
     }
 }

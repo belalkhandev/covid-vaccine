@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\VaccineDosage;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class VaccineDosageSeeder extends Seeder
@@ -39,7 +38,7 @@ class VaccineDosageSeeder extends Seeder
             ],
             [
                 'name' => 'Novavax',
-            ]
+            ],
         ];
     }
 }
