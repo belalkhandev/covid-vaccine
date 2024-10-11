@@ -9,7 +9,7 @@ defineProps({
 <template>
     <Head title="Welcome" />
     <div class="min-h-screen flex justify-center items-center bg-white">
-        <div class="bg-gray-50 w-5/12 p-6 rounded border border-gray-200 flex flex-col gap-6">
+        <div class="bg-gray-50 w-96 p-6 rounded border border-gray-200 flex flex-col gap-6">
             <div>
                 <h2 class="font-bold text-3xl text-center">COVID VACCINE</h2>
             </div>

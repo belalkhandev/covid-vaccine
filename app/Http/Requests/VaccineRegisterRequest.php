@@ -23,7 +23,7 @@ class VaccineRegisterRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'nid' => 'required|string',
+            'nid' => 'required|string|unique:vaccine_recipients,nid',
             'contact_no' => 'required',
             'vaccine_center' => 'required|exists:vaccine_centers,id',
         ];
