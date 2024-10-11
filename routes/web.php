@@ -9,6 +9,7 @@ use Inertia\Inertia;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/register', [VaccineRegistrationController::class, 'index'])->name('register');
+Route::post('/register', [VaccineRegistrationController::class, 'store']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

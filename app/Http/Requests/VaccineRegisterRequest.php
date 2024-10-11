@@ -25,7 +25,18 @@ class VaccineRegisterRequest extends FormRequest
             'name' => 'required|string',
             'nid' => 'required|string|unique:vaccine_recipients,nid',
             'contact_no' => 'required',
-            'vaccine_center' => 'required|exists:vaccine_centers,id',
+            'vaccine_center_id' => 'required|exists:vaccine_centers,id',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'Name is required',
+            'nid.required' => 'NID is required',
+            'nid.unique' => 'NID already exists',
+            'contact_no.required' => 'Contact number is required',
+            'vaccine_center_id.required' => 'Vaccine center is required',
         ];
     }
 }
