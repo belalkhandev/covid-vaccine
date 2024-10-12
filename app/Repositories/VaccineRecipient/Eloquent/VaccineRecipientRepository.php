@@ -36,4 +36,31 @@ class VaccineRecipientRepository extends Repository implements VaccineRecipientR
             ->where('nid', $nid)
             ->first();
     }
+
+    public function getByPaginate(array $filterOptions, ?int $perPage = 15)
+    {
+        return $this->query()
+            ->select('vaccine_recipients.*')
+            ->with([
+                'vaccineCenter',
+                'vaccine',
+                'vaccine.vaccineCenter',
+                'vaccine.vaccineDosage',
+            ])
+            ->leftJoin('vaccines', 'vaccine_recipients.id', '=', 'vaccines.vaccine_recipient_id')
+            ->when($filterOptions['nid'], function ($query) use ($filterOptions) {
+                return $query->where('vaccine_recipients.nid', $filterOptions['nid']);
+            })
+            ->when($filterOptions['vaccine_center'], function ($query) use ($filterOptions) {
+                return $query->where('vaccines.vaccine_center_id', $filterOptions['vaccine_center']);
+            })
+            ->when($filterOptions['vaccine_date'], function ($query) use ($filterOptions) {
+                return $query->whereDate('vaccines.vaccination_date', $filterOptions['vaccine_date']);
+            })
+            ->when($filterOptions['status'], function ($query) use ($filterOptions) {
+                return $query->whereDate('vaccine_recipients.status', $filterOptions['status']);
+            })
+            ->paginate($perPage)
+            ->withQueryString();
+    }
 }

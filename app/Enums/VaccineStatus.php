@@ -8,7 +8,7 @@ enum VaccineStatus: string
 {
     use EnumAttributes;
 
-    case NOT_REGISTERED = 'not_registered';
+    case REGISTERED = 'registered';
 
     case NOT_SCHEDULED = 'not_scheduled';
 
@@ -19,10 +19,10 @@ enum VaccineStatus: string
     public function label(): string
     {
         return match ($this) {
+            self::REGISTERED => 'Registered',
             self::NOT_SCHEDULED => 'Not scheduled',
             self::SCHEDULED => 'Scheduled',
             self::VACCINATED => 'Vaccinated',
-            default => 'Not registered',
         };
     }
 }

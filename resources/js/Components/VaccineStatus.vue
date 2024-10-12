@@ -7,7 +7,7 @@ const vaccine = props.vaccine;
 
 const vaccineStatus = computed(() => {
     if (!vaccine) {
-        return 'Not Registered';
+        return 'Registered';
     }
 
     if (vaccine.vaccination_date) {

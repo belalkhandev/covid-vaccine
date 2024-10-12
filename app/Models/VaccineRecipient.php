@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class VaccineRecipient extends Model
 {
     use HasFactory;
+
+    protected $appends = [
+        'formatted_created_at'
+    ];
 
     protected $fillable = [
         'name',
@@ -25,5 +30,10 @@ class VaccineRecipient extends Model
     public function vaccine()
     {
         return $this->hasOne(Vaccine::class);
+    }
+
+    public function getFormattedCreatedAtAttribute()
+    {
+        return Carbon::parse($this->attributes['created_at'])->format('d M, Y');
     }
 }
