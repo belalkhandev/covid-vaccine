@@ -15,4 +15,8 @@ interface VaccineRecipientRepositoryInterface
     public function getByPaginate(array $filterOptions, ?int $perPage);
 
     public function getUnassignedRecipients();
+
+    public function getScheduledVaccineRecipientsForUpdateStatus(array $with = []);
+
+    public function getScheduledVaccineRecipients(array $with = []);
 }

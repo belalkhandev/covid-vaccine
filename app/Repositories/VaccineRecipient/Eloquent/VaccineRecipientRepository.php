@@ -78,13 +78,16 @@ class VaccineRecipientRepository extends Repository implements VaccineRecipientR
                 return $query->where('vaccine_recipients.nid', $filterOptions['nid']);
             })
             ->when($filterOptions['vaccine_center'], function ($query) use ($filterOptions) {
-                return $query->where('vaccines.vaccine_center_id', $filterOptions['vaccine_center']);
+                return $query->where(function ($query) use ($filterOptions) {
+                    $query->where('vaccines.vaccine_center_id', $filterOptions['vaccine_center'])
+                        ->orWhere('vaccine_recipients.vaccine_center_id', $filterOptions['vaccine_center']);
+                });
             })
             ->when($filterOptions['vaccine_date'], function ($query) use ($filterOptions) {
                 return $query->whereDate('vaccines.vaccination_date', $filterOptions['vaccine_date']);
             })
             ->when($filterOptions['status'], function ($query) use ($filterOptions) {
-                return $query->whereDate('vaccine_recipients.status', $filterOptions['status']);
+                return $query->where('vaccine_recipients.status', $filterOptions['status']);
             })
             ->paginate($perPage)
             ->withQueryString();
@@ -95,5 +98,30 @@ class VaccineRecipientRepository extends Repository implements VaccineRecipientR
         return $this->query()
             ->select('id')
             ->where('status', VaccineStatus::REGISTERED->value);
+    }
+
+    public function getScheduledVaccineRecipientsForUpdateStatus(array $with = [])
+    {
+        return $this->query()
+            ->select('vaccine_recipients.*')
+            ->when(! empty($with), function ($query) use ($with) {
+                $query->with($with);
+            })
+            ->leftJoin('vaccines', 'vaccines.vaccine_recipient_id', 'vaccine_recipients.id')
+            ->whereDate('vaccination_date', '<', now()->format('Y-m-d'))
+            ->where('status', VaccineStatus::SCHEDULED->value)
+            ->get();
+    }
+
+    public function getScheduledVaccineRecipients(array $with = [])
+    {
+        return $this->query()
+            ->select('vaccine_recipients.*')
+            ->when(! empty($with), function ($query) use ($with) {
+                $query->with($with);
+            })
+            ->leftJoin('vaccines', 'vaccines.vaccine_recipient_id', 'vaccine_recipients.id')
+            ->where('status', VaccineStatus::SCHEDULED->value)
+            ->get();
     }
 }
