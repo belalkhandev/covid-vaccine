@@ -2,6 +2,7 @@
 
 namespace App\Repositories\VaccineRecipient\Eloquent;
 
+use App\Enums\VaccineStatus;
 use App\Models\VaccineRecipient;
 use App\Repositories\Repository;
 use App\Repositories\VaccineRecipient\Contracts\VaccineRecipientRepositoryInterface;
@@ -22,6 +23,31 @@ class VaccineRecipientRepository extends Repository implements VaccineRecipientR
             'gender' => $data['gender'],
             'vaccine_center_id' => $data['vaccine_center_id'],
         ]);
+    }
+
+    public function getByIds(array $ids)
+    {
+        return $this->query()
+            ->with([
+                'vaccineCenter',
+                'vaccine',
+                'vaccine.vaccineCenter',
+                'vaccine.vaccineDosage',
+            ])
+            ->whereIn('id', $ids)
+            ->get();
+    }
+
+    public function findById(string $id)
+    {
+        return $this->query()
+            ->with([
+                'vaccineCenter',
+                'vaccine',
+                'vaccine.vaccineCenter',
+                'vaccine.vaccineDosage',
+            ])
+            ->find($id);
     }
 
     public function findByNID(string $nid)
@@ -62,5 +88,12 @@ class VaccineRecipientRepository extends Repository implements VaccineRecipientR
             })
             ->paginate($perPage)
             ->withQueryString();
+    }
+
+    public function getUnassignedRecipients()
+    {
+        return $this->query()
+            ->select('id')
+            ->where('status', VaccineStatus::REGISTERED->value);
     }
 }

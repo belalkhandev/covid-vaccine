@@ -5,7 +5,6 @@ namespace App\Repositories\VaccineCenter\Eloquent;
 use App\Models\VaccineCenter;
 use App\Repositories\Repository;
 use App\Repositories\VaccineCenter\Contracts\VaccineCenterRepositoryInterface;
-use App\Repositories\VaccineCenter\Contracts\VaccineRecipientRepositoryInterface;
 
 class VaccineCenterRepository extends Repository implements VaccineCenterRepositoryInterface
 {
@@ -17,8 +16,16 @@ class VaccineCenterRepository extends Repository implements VaccineCenterReposit
     public function getAll()
     {
         return $this->query()
-            ->select('id', 'name', 'address')
+            ->select('id', 'name', 'address', 'daily_vaccination_capacity')
+            ->with('vaccineDosages')
             ->active()
             ->get();
+    }
+
+    public function countDailyVaccinationCapacity()
+    {
+        return $this->query()
+            ->active()
+            ->sum('daily_vaccination_capacity');
     }
 }
