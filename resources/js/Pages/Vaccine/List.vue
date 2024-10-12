@@ -123,7 +123,7 @@ const submitSearch = () => {
                         </td>
                         <td class="border border-gray-300 px-4 py-2">{{ recipient.formatted_created_at }}</td>
                         <td class="border border-gray-300 px-4 py-2">
-                            {{ recipient.formatted_created_at }}
+                            {{ recipient.vaccine?.formatted_vaccination_date }}
                         </td>
                     </tr>
                     </tbody>

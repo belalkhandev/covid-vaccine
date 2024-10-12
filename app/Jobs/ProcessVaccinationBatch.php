@@ -66,9 +66,8 @@ class ProcessVaccinationBatch implements ShouldQueue
                 ]);
 
                 $vaccineRecipient->update([
-                    'status' => VaccineStatus::SCHEDULED,
+                    'status' => VaccineStatus::SCHEDULED->value,
                 ]);
-            }
-            );
+            });
     }
 }

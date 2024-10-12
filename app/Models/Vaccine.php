@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Vaccine extends Model
 {
     use HasFactory;
+
+    protected $appends = [
+        'formatted_vaccination_date',
+    ];
 
     protected $fillable = [
         'vaccine_recipient_id',
@@ -29,5 +34,10 @@ class Vaccine extends Model
     public function vaccineDosage()
     {
         return $this->belongsTo(VaccineDosage::class);
+    }
+
+    public function getFormattedVaccinationDateAttribute()
+    {
+        return Carbon::parse($this->attributes['vaccination_date'])->format('d M, Y');
     }
 }

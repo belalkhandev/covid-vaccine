@@ -21,6 +21,7 @@ class VaccineRecipient extends Model
         'contact_no',
         'gender',
         'vaccine_center_id',
+        'status',
     ];
 
     public function vaccineCenter()
