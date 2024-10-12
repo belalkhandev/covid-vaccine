@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CheckStatusRequest;
 use App\Repositories\VaccineRecipient\Contracts\VaccineRecipientRepositoryInterface;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
@@ -13,9 +12,7 @@ class VaccineController extends Controller
 {
     public function __construct(
         protected VaccineRecipientRepositoryInterface $vaccineRecipientRepository,
-    )
-    {
-    }
+    ) {}
 
     public function checkStatus(CheckStatusRequest $request)
     {
@@ -34,4 +31,3 @@ class VaccineController extends Controller
         ]);
     }
 }
-

@@ -28,8 +28,7 @@ class VaccinationScheduled extends Command
         protected SettingsRepositoryInterface $settingsRepository,
         protected VaccineCenterRepositoryInterface $vaccineCenterRepository,
         protected VaccineRecipientRepositoryInterface $vaccineRecipientRepository,
-    )
-    {
+    ) {
         parent::__construct();
     }
 
@@ -40,8 +39,9 @@ class VaccinationScheduled extends Command
     {
         $vaccinationApplicableDate = $this->getVaccinationApplicableDate();
 
-        if (!$vaccinationApplicableDate) {
+        if (! $vaccinationApplicableDate) {
             $this->info('Unavailable date');
+
             return;
         }
 
@@ -49,7 +49,7 @@ class VaccinationScheduled extends Command
         $totalProcessed = 0;
 
         $this->vaccineRecipientRepository->getUnassignedRecipients()
-            ->chunk(5, function ($recipients) use ($vaccinationApplicableDate, &$totalProcessed, $dailyTotalVaccinationCapacity) {
+            ->chunk(100, function ($recipients) use ($vaccinationApplicableDate, &$totalProcessed, $dailyTotalVaccinationCapacity) {
                 $remainingCapacity = $dailyTotalVaccinationCapacity - $totalProcessed;
 
                 if ($remainingCapacity <= 0) {
@@ -81,7 +81,7 @@ class VaccinationScheduled extends Command
         $date = now()->addDay();
         $dayName = $date->format('l');
 
-        if (!in_array($dayName, $availableDays)) {
+        if (! in_array($dayName, $availableDays)) {
             return null;
         }
 

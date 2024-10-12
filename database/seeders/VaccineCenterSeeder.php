@@ -45,8 +45,48 @@ class VaccineCenterSeeder extends Seeder
                 'address' => 'Plot 81, Block E, Bashundhara R/A, Dhaka-1229',
             ],
             [
-                'name' => 'National Institute of Neurosciences & Hospital	',
+                'name' => 'National Institute of Neurosciences & Hospital',
                 'address' => 'Sher-E-Bangla Nagar, Dhaka-1207',
+            ],
+            [
+                'name' => 'Bangabandhu Sheikh Mujib Medical University (BSMMU)',
+                'address' => 'Shahbag, Dhaka-1000',
+            ],
+            [
+                'name' => 'BIRDEM General Hospital',
+                'address' => '122 Kazi Nazrul Islam Avenue, Shahbagh, Dhaka-1000',
+            ],
+            [
+                'name' => 'United Hospital Limited',
+                'address' => 'Plot 15, Road 71, Gulshan, Dhaka-1212',
+            ],
+            [
+                'name' => 'Holy Family Red Crescent Medical College Hospital',
+                'address' => '1 Eskaton Garden Road, Dhaka-1000',
+            ],
+            [
+                'name' => 'Shaheed Suhrawardy Medical College Hospital',
+                'address' => 'Sher-E-Bangla Nagar, Dhaka-1207',
+            ],
+            [
+                'name' => 'Square Hospital',
+                'address' => '18/F, Bir Uttam Qazi Nuruzzaman Sarak, Dhaka-1205',
+            ],
+            [
+                'name' => 'Popular Medical College & Hospital',
+                'address' => 'House 25, Road 2, Dhanmondi, Dhaka-1205',
+            ],
+            [
+                'name' => 'Labaid Hospital',
+                'address' => 'House 1, Road 4, Dhanmondi, Dhaka-1205',
+            ],
+            [
+                'name' => 'Ahsania Mission Cancer & General Hospital',
+                'address' => 'Plot No. M-1/C, Mirpur-14, Dhaka-1206',
+            ],
+            [
+                'name' => 'Sir Salimullah Medical College and Mitford Hospital',
+                'address' => 'Mitford, Dhaka-1100',
             ],
         ];
     }

@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(VaccineDosageSeeder::class);
         $this->call(VaccineCenterSeeder::class);
         $this->call(SettingsTableSeeder::class);
+        $this->call(VaccineRecipientTableSeeder::class);
     }
 }

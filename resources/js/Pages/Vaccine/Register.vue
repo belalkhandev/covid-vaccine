@@ -17,6 +17,7 @@ const form = useForm({
     name: '',
     nid: '',
     contact_no: '',
+    email: '',
     gender: '',
     vaccine_center_id: ''
 });
@@ -65,7 +66,11 @@ const submitForm = () => {
                         <input type="text" class="rounded border-gray-300" v-model="form.nid" placeholder="Enter NID">
                         <InputError :message="form.errors.nid" />
                     </div>
-
+                    <div class="form-group flex flex-col gap-1">
+                        <label for="">Contact No</label>
+                        <input type="email" class="rounded border-gray-300" v-model="form.email" placeholder="Enter Email">
+                        <InputError :message="form.errors.email" />
+                    </div>
                     <div class="form-group flex flex-col gap-1">
                         <label for="">Contact No</label>
                         <input type="text" class="rounded border-gray-300" v-model="form.contact_no" placeholder="Enter Contact No">

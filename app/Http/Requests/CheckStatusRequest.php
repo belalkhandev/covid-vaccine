@@ -22,7 +22,7 @@ class CheckStatusRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nid' => 'required'
+            'nid' => 'required',
         ];
     }
 }

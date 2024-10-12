@@ -102,7 +102,7 @@ const submitSearch = () => {
                         <th class="border border-gray-300 px-4 py-2 text-left">#</th>
                         <th class="border border-gray-300 px-4 py-2 text-left">Name</th>
                         <th class="border border-gray-300 px-4 py-2 text-left">NID</th>
-                        <th class="border border-gray-300 px-4 py-2 text-left">Contact No</th>
+                        <th class="border border-gray-300 px-4 py-2 text-left">Email</th>
                         <th class="border border-gray-300 px-4 py-2 text-left">Vaccine Center</th>
                         <th class="border border-gray-300 px-4 py-2 text-left">Vaccine Dosage</th>
                         <th class="border border-gray-300 px-4 py-2 text-left">Status</th>
@@ -115,7 +115,7 @@ const submitSearch = () => {
                         <td class="border border-gray-300 px-4 py-2">{{ i + 1 }}</td>
                         <td class="border border-gray-300 px-4 py-2">{{ recipient.name }}</td>
                         <td class="border border-gray-300 px-4 py-2">{{ recipient.nid }}</td>
-                        <td class="border border-gray-300 px-4 py-2">{{ recipient.contact_no }}</td>
+                        <td class="border border-gray-300 px-4 py-2">{{ recipient.email }}</td>
                         <td class="border border-gray-300 px-4 py-2">{{ recipient.vaccine?.vaccine_center.name || recipient.vaccine_center.name }}</td>
                         <td class="border border-gray-300 px-4 py-2">{{ recipient.vaccine?.vaccine_dosage.name || 'N/A' }}</td>
                         <td class="border border-gray-300 px-4 py-2">

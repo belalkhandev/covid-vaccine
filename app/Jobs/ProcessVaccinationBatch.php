@@ -15,6 +15,7 @@ class ProcessVaccinationBatch implements ShouldQueue
     use Queueable;
 
     protected $recipientIds;
+
     protected $vaccinationApplicableDate;
 
     /**
@@ -22,8 +23,7 @@ class ProcessVaccinationBatch implements ShouldQueue
      */
     public function __construct(
         array $recipientIds, string $vaccinationApplicableDate
-    )
-    {
+    ) {
         $this->recipientIds = $recipientIds;
         $this->vaccinationApplicableDate = $vaccinationApplicableDate;
     }
@@ -35,8 +35,7 @@ class ProcessVaccinationBatch implements ShouldQueue
         VaccineCenterRepositoryInterface $vaccineCenterRepository,
         VaccineRecipientRepositoryInterface $vaccineRecipientRepository,
         VaccineRepositoryInterface $vaccineRepository
-    ): void
-    {
+    ): void {
         $vaccinationApplicableDate = $this->vaccinationApplicableDate;
         $vaccineCenters = $vaccineCenterRepository->getAll();
 
@@ -67,9 +66,9 @@ class ProcessVaccinationBatch implements ShouldQueue
                 ]);
 
                 $vaccineRecipient->update([
-                    'status' => VaccineStatus::SCHEDULED
+                    'status' => VaccineStatus::SCHEDULED,
                 ]);
             }
-        );
+            );
     }
 }

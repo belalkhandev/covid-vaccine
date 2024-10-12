@@ -13,16 +13,14 @@ class VaccineRegistrationController extends Controller
     public function __construct(
         protected VaccineCenterRepositoryInterface $vaccineCenterRepository,
         protected VaccineRecipientRepositoryInterface $vaccineRecipientRepository
-    )
-    {
-    }
+    ) {}
 
     public function index()
     {
         $vaccineCenters = $this->vaccineCenterRepository->getAll();
 
         return Inertia::render('Vaccine/Register', [
-            'vaccineCenters' => $vaccineCenters
+            'vaccineCenters' => $vaccineCenters,
         ]);
     }
 

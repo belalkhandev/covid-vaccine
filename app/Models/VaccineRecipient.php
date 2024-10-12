@@ -11,12 +11,13 @@ class VaccineRecipient extends Model
     use HasFactory;
 
     protected $appends = [
-        'formatted_created_at'
+        'formatted_created_at',
     ];
 
     protected $fillable = [
         'name',
         'nid',
+        'email',
         'contact_no',
         'gender',
         'vaccine_center_id',

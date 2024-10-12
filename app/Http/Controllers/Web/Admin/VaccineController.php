@@ -15,9 +15,7 @@ class VaccineController extends Controller
     public function __construct(
         protected VaccineRecipientRepositoryInterface $vaccineRecipientRepository,
         protected VaccineCenterRepositoryInterface $vaccineCenterRepository,
-    )
-    {
-    }
+    ) {}
 
     public function index(Request $request)
     {

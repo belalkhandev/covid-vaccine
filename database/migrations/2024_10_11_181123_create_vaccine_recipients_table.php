@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('nid', 20)->unique()->index();
+            $table->string('email');
             $table->string('contact_no', 20);
             $table->enum('gender', ['male', 'female', 'other'])->nullable();
             $table->foreignId('vaccine_center_id')->nullable()->constrained('vaccine_centers')->nullOnDelete();
